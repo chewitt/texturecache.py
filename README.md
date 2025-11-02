@@ -107,31 +107,17 @@ Download the single Python file required from Github. A default properties file 
 To download the script at the command line:
 
 ```bash
-wget https://raw.githubusercontent.com/MilhouseVH/texturecache.py/master/texturecache.py -O texturecache.py
+wget https://raw.githubusercontent.com/xbmc/texturecache/master/texturecache.py -O texturecache.py
 chmod +x ./texturecache.py
 ```
 
 If you experience a certificate error, try adding "--no-check-certificate" to the wget command line.
 
-If you are using OpenELEC which has a pretty basic wget that doesn't support HTTPS downloads, instead use `curl`:
+If you are using LibreELEC which has a pretty basic wget that doesn't support HTTPS downloads, instead use `curl`:
 
 ```bash
-curl https://raw.githubusercontent.com/MilhouseVH/texturecache.py/master/texturecache.py -o texturecache.py
+curl https://raw.githubusercontent.com/xbmc/texturecache/master/texturecache.py -o texturecache.py
 chmod +x ./texturecache.py
-```
-
-##### ATV2 (iOS) users
-
-Python 2.6+ is required to run this script, and although Python can be installed on iOS using `apt-get install python`, the version installed (typically v2.5.1 - check with `python --version`) is very old and lacks language features required by the script. It is possible to install a more recent [Python 2.7.3 package](http://code.google.com/p/yangapp/downloads/detail?name=python_2.7.3-3_iphoneos-arm.deb&can=2&q=) as follows:
-
-#### Code:
-
-```bash
-ssh root@YOUR.ATV2.IP.ADDRESS
-rm -f python*.deb
-wget http://yangapp.googlecode.com/files/python_2.7.3-3_iphoneos-arm.deb
-dpkg -i python*.deb
-rm python*.deb
 ```
 
 ## Basic Example usage
@@ -525,13 +511,13 @@ Specify a filename for the `logfile` property, to log detailed processing inform
 
 Use `download.threads` to vary the number of threads used when downloading and caching data. Class specific values can also be used, eg. `download.threads.movies`. Any class without a specific value will use `download.threads`.
 
-Specify a comma delimited list of pattherns in `singlethread.urls` to force downloads corresponding with those URLs on a single thread, necessary for sites that limit the number of concurrent requests. One such site is fanart.tv, hence the default value includes `assets\.fanart\.tv`.
+Specify a comma delimited list of patterns in `singlethread.urls` to force downloads corresponding with those URLs on a single thread, necessary for sites that limit the number of concurrent requests. One such site is fanart.tv, hence the default value includes `assets\.fanart\.tv`.
 
 When identifying `missing` media files (ie. files that are not present in the media library), additional audio and video file types can be included by specifying a comma delimited list of file extensions for `audio.filetypes` and `video.filetypes` respectively (eg. `wmv, ogg`). All current Kodi audio and video file extensions are supported by default.
 
 ## Command Line Properties
 
-As an alterantive or in addition to a properties file, properties may be specified on the command line, using the syntax `@<key>=<value>` - such command line property values will override any matching property retrieved from the properties file.
+As an alternative or in addition to a properties file, properties may be specified on the command line, using the syntax `@<key>=<value>` - such command line property values will override any matching property retrieved from the properties file.
 
 In addition, the name of the properties file may be specified using the `@config` command line property, eg. `@config=./myconfig.cfg`.
 
